@@ -63,6 +63,10 @@ export class CSVImportIntegration {
                                         }
                                     })
 
+                                    if (!outputRow.hasOwnProperty('name')) {
+                                        outputRow.name = 'Unknown'
+                                    }
+
                                     // Remove spaces/special characters from amount field
                                     if (outputRow.hasOwnProperty('amount')) {
                                         const pattern = new RegExp(`[^0-9\.\-]*`, 'gi')
@@ -78,12 +82,16 @@ export class CSVImportIntegration {
                                         )
                                     }
 
+                                    if (!outputRow.hasOwnProperty('currency')) {
+                                            outputRow.currency = CSVAccountConfig.defaultCurrency
+                                    }
+
                                     if (!outputRow.hasOwnProperty('category')) {
                                         outputRow.category = 'Uncategorized'
                                     }
 
                                     if (outputRow.hasOwnProperty('category')) {
-                                        if(outputRow.category === '' || outputRow.category === 'null' || outputRow.category === 'undefined') {
+                                        if(outputRow.category === '' || outputRow.category === 'null' || outputRow.category === 'undefined' || outputRow.category === undefined || outputRow.category === null) {
                                             outputRow.category = 'Uncategorized'
                                         }
                                     }

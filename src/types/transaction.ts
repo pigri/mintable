@@ -44,6 +44,8 @@ export interface Transaction {
 
     // whether the transaction has posted or not
     pending?: boolean
+
+    notes?: string
 }
 
 export interface TransactionRuleCondition {

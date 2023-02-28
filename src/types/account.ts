@@ -42,6 +42,7 @@ export interface CSVAccountConfig extends BaseAccountConfig {
     dateFormat: string
     negateValues?: boolean
     delimiter?: string
+    defaultCurrency?: string
 }
 
 export type AccountConfig = PlaidAccountConfig | CSVAccountConfig
